@@ -5,7 +5,7 @@ import { IPost } from './post.model';
 
 @Injectable()
 export class PostsService {
-	private readonly url = 'hhttps://my-json-server.typicode.com/pejoDev/Qbook';
+	private readonly url = 'https://my-json-server.typicode.com/pejoDev/Qbook';
 
 	constructor(private httpClient: HttpClient) {}
 	/**
