@@ -39,3 +39,5 @@ This file is about project time estimation and time logging.
 30.07 - created services&models, reading and getting into my-json-server, added db.json with data => 1.5h
 
 31.07 - created components and folder structure, added boostrap => 1h
+
+01.08/02.08 - added html and css for comments, posts and filter component => 3h

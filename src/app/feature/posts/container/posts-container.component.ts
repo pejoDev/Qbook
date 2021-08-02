@@ -1,15 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-posts-container',
-  templateUrl: './posts-container.component.html',
-  styleUrls: ['./posts-container.component.scss']
+	selector: 'app-posts-container',
+	templateUrl: './posts-container.component.html',
+	styleUrls: ['./posts-container.component.scss']
 })
 export class PostsContainerComponent implements OnInit {
+	constructor() {}
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+	ngOnInit(): void {
+		console.log('asdasdasdsa');
+	}
 }
