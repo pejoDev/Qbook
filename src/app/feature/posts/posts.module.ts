@@ -5,6 +5,10 @@ import { PostsSearchComponent } from './presentation/posts-search/posts-search.c
 import { PostsSearchResultComponent } from './presentation/posts-search-result/posts-search-result.component';
 import { RouterModule } from '@angular/router';
 import { CommentModule } from '../comment/comment.module';
+import { CommentsService } from 'src/app/data-access/comments/comments.service';
+import { PostsService } from 'src/app/data-access/posts/posts.service';
+import { UsersService } from 'src/app/data-access/users/users.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
 	declarations: [
@@ -21,12 +25,14 @@ import { CommentModule } from '../comment/comment.module';
 				component: PostsContainerComponent
 			}
 		]),
-		CommentModule
+		CommentModule,
+		HttpClientModule
 	],
 	exports: [
 		PostsContainerComponent,
 		PostsSearchComponent,
 		PostsSearchResultComponent
-	]
+	],
+	providers: [CommentsService, PostsService, UsersService]
 })
 export class PostsModule {}

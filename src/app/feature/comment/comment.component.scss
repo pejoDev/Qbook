@@ -18,6 +18,10 @@
 	background-color: #fff;
 }
 
+.post-user {
+	margin-bottom: 0px;
+}
+
 p.comment-txt {
 	font-size: 15px;
 	border-bottom: 1px solid #ddd;
@@ -26,7 +30,7 @@ p.comment-txt {
 .commenter-name {
 	display: inline-block;
 	position: relative;
-	top: -20px;
+	top: -5px;
 	left: 10px;
 	font-size: 16px;
 	font-weight: bold;
