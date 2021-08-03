@@ -8,7 +8,5 @@ import { Component, OnInit } from '@angular/core';
 export class PostsContainerComponent implements OnInit {
 	constructor() {}
 
-	ngOnInit(): void {
-		console.log('asdasdasdsa');
-	}
+	ngOnInit(): void {}
 }
