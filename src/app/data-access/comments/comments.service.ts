@@ -20,4 +20,12 @@ export class CommentsService {
 	getCommentById(commentId: number): Observable<IComment> {
 		return this.httpClient.get<IComment>(`${this.url}/comments/${commentId}`);
 	}
+	/**
+	 * Function for getting comment by post id
+	 */
+	getCommentByPostId(postId: number): Observable<IComment[]> {
+		return this.httpClient.get<IComment[]>(
+			`${this.url}/comments?postId=${postId}`
+		);
+	}
 }

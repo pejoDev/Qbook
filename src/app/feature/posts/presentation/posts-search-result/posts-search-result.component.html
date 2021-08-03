@@ -1,0 +1,19 @@
+<div class="container">
+	<div class="row">
+		<div class="col-12">
+			<div class="posts">
+				<div class="post-box" *ngFor="let post of searchResult$ | async">
+					<span class="post-pic">
+						<img src="assets/user-image.png" class="img-fluid" />
+					</span>
+					<span class="post-name">
+						<p class="post-user">{{ post.username }}</p>
+						<a href="#">{{ post.title }}</a>
+					</span>
+					<p class="post-txt more">{{ post.body }}</p>
+					<app-comment></app-comment>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
