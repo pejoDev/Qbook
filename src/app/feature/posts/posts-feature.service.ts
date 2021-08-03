@@ -11,9 +11,7 @@ import { IUser } from '../../data-access/users/user.model';
 import { IPostsState, postsInitialState } from './posts-state.model';
 import { State } from 'src/app/utils/state-management/state';
 import { IPostsSearchUi } from './presentation/posts-search/posts-search.ui.model';
-@Injectable({
-	providedIn: 'any'
-})
+@Injectable()
 export class PostsFeatureService {
 	private unsubscribe$ = new Subject();
 
@@ -24,13 +22,6 @@ export class PostsFeatureService {
 		private userService: UsersService
 	) {}
 
-	/*get searchResult$(): Observable<IPost[]> {
-		return this.postsService.getPosts().pipe(
-			map((post: IPost[]) => {
-				return post;
-			})
-		);
-	}*/
 	get searchResult$(): Observable<IPostsSearchResultUi[]> {
 		return this.state.select(
 			state => <IPostsSearchResultUi[]>state?.searchResult
@@ -74,14 +65,15 @@ export class PostsFeatureService {
 
 	public loadUsers(): Observable<IPostsState> {
 		return this.userService.getUsers().pipe(
-			map(
-				user =>
-					<IPostsState>{
-						...postsInitialState,
-						usersMeta: user
-					}
-			),
-			tap(defaults => this.state.set(defaults))
+			map(user => {
+				return <IPostsState>{
+					...postsInitialState,
+					usersMeta: user
+				};
+			}),
+			tap(state => {
+				this.state.set(state);
+			})
 		);
 	}
 
@@ -108,10 +100,7 @@ export class PostsFeatureService {
 
 	private onSearchNext = (searchResult: IPost[]): void => {
 		this.state.set({
-			searchResult: this.mapToSearchResultUi(
-				<IUser[]>this.state.snapshot.usersMeta,
-				searchResult
-			)
+			searchResult: this.mapToSearchResultUi(searchResult)
 		});
 	};
 
@@ -121,16 +110,15 @@ export class PostsFeatureService {
 		);*/
 	};
 
-	mapToSearchResultUi(users: IUser[], posts: IPost[]): IPostsSearchResultUi[] {
+	mapToSearchResultUi(posts: IPost[]): IPostsSearchResultUi[] {
 		return posts.map((post: IPost) => {
-			const user = users.find((user: IUser) => {
-				return (user.id = post.userId);
+			const user = this.state.snapshot.usersMeta?.find((user: IUser) => {
+				return user.id === post.userId;
 			});
-			console.log('finded user', user);
 			return <IPostsSearchResultUi>{
-				name: user ? user.name : null,
-				username: user ? user.username : null,
-				email: user ? user.email : null,
+				name: user ? user.name : '',
+				username: user ? user.username : '',
+				email: user ? user.email : '',
 				body: post.body,
 				title: post.title
 			};

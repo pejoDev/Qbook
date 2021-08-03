@@ -9,6 +9,7 @@ import { CommentsService } from 'src/app/data-access/comments/comments.service';
 import { PostsService } from 'src/app/data-access/posts/posts.service';
 import { UsersService } from 'src/app/data-access/users/users.service';
 import { HttpClientModule } from '@angular/common/http';
+import { PostsFeatureService } from './posts-feature.service';
 
 @NgModule({
 	declarations: [
@@ -33,6 +34,6 @@ import { HttpClientModule } from '@angular/common/http';
 		PostsSearchComponent,
 		PostsSearchResultComponent
 	],
-	providers: [CommentsService, PostsService, UsersService]
+	providers: [CommentsService, PostsService, UsersService, PostsFeatureService]
 })
 export class PostsModule {}
