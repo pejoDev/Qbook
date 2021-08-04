@@ -36,16 +36,6 @@ export class PostsFeatureService {
 		return this.userService.getUserById(userId);
 	}
 
-	mapToSearchResult(user: IUser, post: IPost): IPostsSearchResultUi {
-		return <IPostsSearchResultUi>{
-			name: user.name,
-			username: user.username,
-			email: user.email,
-			body: post.body,
-			title: post.title
-		};
-	}
-
 	ngOnDestroy(): void {
 		this.unsubscribe$.next();
 		this.unsubscribe$.complete();
@@ -119,6 +109,7 @@ export class PostsFeatureService {
 				name: user ? user.name : '',
 				username: user ? user.username : '',
 				email: user ? user.email : '',
+				postId: post.id,
 				body: post.body,
 				title: post.title
 			};

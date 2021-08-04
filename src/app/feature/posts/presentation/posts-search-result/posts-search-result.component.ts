@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { take } from 'rxjs/operators';
+import { IComment } from 'src/app/data-access/comments/comment.model';
 import { PostsFeatureService } from 'src/app/feature/posts/posts-feature.service';
 import { IPostsSearchUi } from '../posts-search/posts-search.ui.model';
 import { IPostsSearchResultUi } from './posts-search-result.ui.model';
@@ -40,5 +41,9 @@ export class PostsSearchResultComponent implements OnInit {
 			email: ''
 		};
 		this.postsFeatureService.search(fakedSearchValues);
+	}
+
+	getPostComments(postId: number): Observable<IComment[]> {
+		return this.postsFeatureService.getPostComments(postId);
 	}
 }

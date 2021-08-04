@@ -16,19 +16,17 @@ This file is about project time estimation and time logging.
 
             - `estimate time 3h`
 
-31.07
+31.07-04.08
 
 - add associated comments
 
               - `estimate time 2h`
 
-  01.08
-
 - add posts details page feature
 
               - `estimate time 3h`
 
-  02.08 - write tests - test application
+  05.08 - write tests - test application
 
               - `estimate time 3h`
 
@@ -41,3 +39,5 @@ This file is about project time estimation and time logging.
 31.07 - created components and folder structure, added boostrap => 1h
 
 01.08/02.08 - added html and css for comments, posts and filter component => 3h
+
+03.08/04.08 - connected components to db(posts, users, comments, css/html improvements) => 2h
