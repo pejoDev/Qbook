@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { take } from 'rxjs/operators';
-import { IComment } from 'src/app/data-access/comments/comment.model';
-import { PostsFeatureService } from 'src/app/feature/posts/posts-feature.service';
+import { PostsFeatureService } from '../../posts-feature.service';
 import { IPostsSearchUi } from '../posts-search/posts-search.ui.model';
 import { IPostsSearchResultUi } from './posts-search-result.ui.model';
 

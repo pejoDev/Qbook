@@ -1,9 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { State } from 'src/app/utils/state-management/state';
-import { PostsFeatureService } from '../posts-feature.service';
-import { IPostsState } from '../posts-state.model';
-import { IPostsSearchResultUi } from '../presentation/posts-search-result/posts-search-result.ui.model';
+import { IPostsSearchResultUi } from '../posts-overview/presentation/posts-search-result/posts-search-result.ui.model';
 
 @Component({
 	selector: 'app-post-details',

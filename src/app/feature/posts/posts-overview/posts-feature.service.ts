@@ -1,16 +1,16 @@
 import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
-import { CommentsService } from '../../data-access/comments/comments.service';
-import { PostsService } from '../../data-access/posts/posts.service';
 import { IPostsSearchResultUi } from './presentation/posts-search-result/posts-search-result.ui.model';
 import { map, take, tap } from 'rxjs/operators';
-import { IPost } from '../../data-access/posts/post.model';
-import { IComment } from '../../data-access/comments/comment.model';
-import { UsersService } from '../../data-access/users/users.service';
-import { IUser } from '../../data-access/users/user.model';
 import { IPostsState, postsInitialState } from './posts-state.model';
 import { State } from 'src/app/utils/state-management/state';
 import { IPostsSearchUi } from './presentation/posts-search/posts-search.ui.model';
+import { UsersService } from 'src/app/data-access/users/users.service';
+import { CommentsService } from 'src/app/data-access/comments/comments.service';
+import { PostsService } from 'src/app/data-access/posts/posts.service';
+import { IComment } from 'src/app/data-access/comments/comment.model';
+import { IUser } from 'src/app/data-access/users/user.model';
+import { IPost } from 'src/app/data-access/posts/post.model';
 @Injectable()
 export class PostsFeatureService {
 	private unsubscribe$ = new Subject();
