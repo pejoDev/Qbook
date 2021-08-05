@@ -40,8 +40,4 @@ export class PostsSearchResultComponent implements OnInit {
 		};
 		this.postsFeatureService.search(fakedSearchValues);
 	}
-
-	getPostComments(postId: number): Observable<IComment[]> {
-		return this.postsFeatureService.getPostComments(postId);
-	}
 }

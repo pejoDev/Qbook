@@ -11,6 +11,7 @@
 						<a>{{ postDetails.title }}</a>
 					</span>
 					<p class="post-txt more">{{ postDetails.body }}</p>
+					<app-comment [postId]="postDetails.postId"></app-comment>
 				</div>
 			</div>
 		</div>

@@ -13,9 +13,7 @@
 						}}</a>
 					</span>
 					<p class="post-txt more">{{ result.body }}</p>
-					<app-comment
-						[comments$]="getPostComments(result.postId)"
-					></app-comment>
+					<app-comment [postId]="result.postId"></app-comment>
 				</div>
 			</div>
 		</div>
