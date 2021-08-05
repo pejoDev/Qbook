@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Observable, of } from 'rxjs';
 import { IPostsSearchResultUi } from '../posts-overview/presentation/posts-search-result/posts-search-result.ui.model';
 
 @Component({
@@ -9,11 +8,11 @@ import { IPostsSearchResultUi } from '../posts-overview/presentation/posts-searc
 	styleUrls: ['./post-details.component.scss']
 })
 export class PostDetailsComponent implements OnInit {
-	postDetails: IPostsSearchResultUi;
+	postsSearchResultUi: IPostsSearchResultUi;
 
 	constructor(private router: Router) {
-		this.postDetails =
-			this.router.getCurrentNavigation()?.extras.state?.data.result;
+		this.postsSearchResultUi =
+			this.router.getCurrentNavigation()?.extras.state?.data.postsSearchResultUi;
 
 		/* 
 		Getting the data is not so obvious at a first glance.

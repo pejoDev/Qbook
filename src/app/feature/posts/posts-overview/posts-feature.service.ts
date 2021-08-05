@@ -117,23 +117,31 @@ export class PostsFeatureService {
 			})
 			.filter((searchResult: IPostsSearchResultUi) => {
 				return searchResult.name
-					? searchResult.name.includes(
-							<string>this.state.snapshot?.searchValues?.name
-					  )
+					? searchResult.name
+							.toLowerCase()
+							.includes(
+								<string>this.state.snapshot?.searchValues?.name.toLowerCase()
+							)
 					: true;
 			})
 			.filter((searchResult: IPostsSearchResultUi) => {
 				return searchResult.username
-					? searchResult.username.includes(
-							<string>this.state.snapshot?.searchValues?.username
-					  )
+					? searchResult.username
+							.toLowerCase()
+							.includes(
+								<string>(
+									this.state.snapshot?.searchValues?.username.toLowerCase()
+								)
+							)
 					: true;
 			})
 			.filter((searchResult: IPostsSearchResultUi) => {
 				return searchResult.email
-					? searchResult.email.includes(
-							<string>this.state.snapshot?.searchValues?.email
-					  )
+					? searchResult.email
+							.toLowerCase()
+							.includes(
+								<string>this.state.snapshot?.searchValues?.email.toLowerCase()
+							)
 					: true;
 			});
 	}

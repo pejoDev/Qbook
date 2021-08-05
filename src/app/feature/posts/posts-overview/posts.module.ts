@@ -12,6 +12,7 @@ import { PostsFeatureService } from './posts-feature.service';
 import { CommentModule } from '../../comment/comment.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { PostsOverviewFormService } from './presentation/posts-search/form/posts-overview-form.service';
+import { PostModule } from '../post/post.module';
 
 @NgModule({
 	declarations: [
@@ -30,7 +31,8 @@ import { PostsOverviewFormService } from './presentation/posts-search/form/posts
 		]),
 		CommentModule,
 		HttpClientModule,
-		ReactiveFormsModule
+		ReactiveFormsModule,
+  PostModule
 	],
 	exports: [
 		PostsContainerComponent,

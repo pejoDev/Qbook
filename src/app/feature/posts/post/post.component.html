@@ -1,0 +1,19 @@
+<div class="post-box">
+	<span class="post-pic">
+		<img src="assets/user-image.png" class="img-fluid" />
+	</span>
+	<span class="post-name">
+		<p class="post-user">{{ postsSearchResultUi.name }}</p>
+		<a
+			*ngIf="showLinkToPostDetails"
+			[routerLink]="['/post/details']"
+			[state]="{ data: {postsSearchResultUi}}"
+			>{{ postsSearchResultUi.title }}</a
+		>
+		<p *ngIf="!showLinkToPostDetails">
+			{{ postsSearchResultUi.title }}
+		</p>
+	</span>
+	<p class="post-txt more">{{ postsSearchResultUi.body }}</p>
+	<app-comment [postId]="postsSearchResultUi.postId"></app-comment>
+</div>
