@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { take } from 'rxjs/operators';
@@ -11,32 +11,6 @@ import { IPostsSearchResultUi } from './posts-search-result.ui.model';
 	templateUrl: './posts-search-result.component.html',
 	styleUrls: ['./posts-search-result.component.scss']
 })
-export class PostsSearchResultComponent implements OnInit {
-	constructor(private postsFeatureService: PostsFeatureService) {
-		this.searchResult$ = this.postsFeatureService.searchResult$;
-	}
-
-	public searchResult$: Observable<IPostsSearchResultUi[]>;
-
-	ngOnInit(): void {
-		this.initSearchValuesAndSearch();
-	}
-
-	private initSearchValuesAndSearch(): void {
-		this.postsFeatureService
-			.init()
-			.pipe(take(1))
-			.subscribe(() => {
-				this.onSearch();
-			});
-	}
-
-	onSearch(): void {
-		let fakedSearchValues: IPostsSearchUi = {
-			name: '',
-			username: '',
-			email: ''
-		};
-		this.postsFeatureService.search(fakedSearchValues);
-	}
+export class PostsSearchResultComponent {
+	@Input() searchResult$: Observable<IPostsSearchResultUi[]> | undefined;
 }
