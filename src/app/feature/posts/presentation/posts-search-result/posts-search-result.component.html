@@ -7,8 +7,10 @@
 						<img src="assets/user-image.png" class="img-fluid" />
 					</span>
 					<span class="post-name">
-						<p class="post-user">{{ result.username }}</p>
-						<a href="#">{{ result.title }}</a>
+						<p class="post-user">{{ result.name }}</p>
+						<a [routerLink]="['/post/details']" [state]="{ data: {result}}">{{
+							result.title
+						}}</a>
 					</span>
 					<p class="post-txt more">{{ result.body }}</p>
 					<app-comment

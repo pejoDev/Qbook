@@ -11,6 +11,13 @@ const routes: Routes = [
 		path: 'posts',
 		loadChildren: () =>
 			import('./feature/posts/posts.module').then(m => m.PostsModule)
+	},
+	{
+		path: 'post',
+		loadChildren: () =>
+			import('./feature/posts/post-details/post-details.module').then(
+				m => m.PostDetailsModule
+			)
 	}
 ];
 
