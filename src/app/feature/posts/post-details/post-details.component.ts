@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Observable, of } from 'rxjs';
 import { IPostsSearchResultUi } from '../posts-overview/presentation/posts-search-result/posts-search-result.ui.model';
 
 @Component({
@@ -9,8 +11,10 @@ import { IPostsSearchResultUi } from '../posts-overview/presentation/posts-searc
 export class PostDetailsComponent implements OnInit {
 	postDetails: IPostsSearchResultUi;
 
-	constructor() {
-		this.postDetails = history.state.data?.result;
+	constructor(private router: Router) {
+		this.postDetails =
+			this.router.getCurrentNavigation()?.extras.state?.data.result;
+
 		/* 
 		Getting the data is not so obvious at a first glance.
 		Someone could expect that ActivatedRoute will contain it, but there is no attribute for state.

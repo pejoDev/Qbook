@@ -101,18 +101,58 @@ export class PostsFeatureService {
 	};
 
 	mapToSearchResultUi(posts: IPost[]): IPostsSearchResultUi[] {
-		return posts.map((post: IPost) => {
-			const user = this.state.snapshot.usersMeta?.find((user: IUser) => {
-				return user.id === post.userId;
+		return posts
+			.map((post: IPost) => {
+				const user = this.state.snapshot.usersMeta?.find((user: IUser) => {
+					return user.id === post.userId;
+				});
+				return <IPostsSearchResultUi>{
+					name: user ? user.name : '',
+					username: user ? user.username : '',
+					email: user ? user.email : '',
+					postId: post.id,
+					body: post.body,
+					title: post.title
+				};
+			})
+			.filter((searchResult: IPostsSearchResultUi) => {
+				return searchResult.name
+					? searchResult.name.includes(
+							<string>this.state.snapshot?.searchValues?.name
+					  )
+					: true;
+			})
+			.filter((searchResult: IPostsSearchResultUi) => {
+				return searchResult.username
+					? searchResult.username.includes(
+							<string>this.state.snapshot?.searchValues?.username
+					  )
+					: true;
+			})
+			.filter((searchResult: IPostsSearchResultUi) => {
+				return searchResult.email
+					? searchResult.email.includes(
+							<string>this.state.snapshot?.searchValues?.email
+					  )
+					: true;
 			});
-			return <IPostsSearchResultUi>{
-				name: user ? user.name : '',
-				username: user ? user.username : '',
-				email: user ? user.email : '',
-				postId: post.id,
-				body: post.body,
-				title: post.title
-			};
-		});
 	}
 }
+
+/*
+let bol: boolean = true;
+				if (this.state.snapshot?.searchValues?.name) {
+					bol = searchResult.name.includes(
+						<string>this.state.snapshot?.searchValues?.name
+					);
+				} else if (this.state.snapshot?.searchValues?.username) {
+					bol = searchResult.username.includes(
+						<string>this.state.snapshot?.searchValues?.username
+					);
+				} else if (this.state.snapshot?.searchValues?.email) {
+					bol = searchResult.email.includes(
+						<string>this.state.snapshot?.searchValues?.email
+					);
+				}
+				return bol;
+*/

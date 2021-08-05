@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { take } from 'rxjs/operators';
 import { PostsFeatureService } from '../posts-feature.service';
 import { IPostsSearchResultUi } from '../presentation/posts-search-result/posts-search-result.ui.model';
+import { PostsOverviewFormService } from '../presentation/posts-search/form/posts-overview-form.service';
 import { IPostsSearchUi } from '../presentation/posts-search/posts-search.ui.model';
 
 @Component({
@@ -13,7 +15,11 @@ import { IPostsSearchUi } from '../presentation/posts-search/posts-search.ui.mod
 export class PostsContainerComponent implements OnInit {
 	public searchResult$: Observable<IPostsSearchResultUi[]>;
 
-	constructor(private postsFeatureService: PostsFeatureService) {
+	formGroup: FormGroup = this.postsOverviewFormService.createFormGroup();
+	constructor(
+		private postsFeatureService: PostsFeatureService,
+		private postsOverviewFormService: PostsOverviewFormService
+	) {
 		this.searchResult$ = this.postsFeatureService.searchResult$;
 	}
 
@@ -25,16 +31,14 @@ export class PostsContainerComponent implements OnInit {
 		this.postsFeatureService
 			.init()
 			.pipe(take(1))
-			.subscribe(() => {
+			.subscribe(value => {
+				this.postsOverviewFormService.value = <IPostsSearchUi>(
+					value.searchValues
+				);
 				this.onSearch();
 			});
 	}
 	onSearch(): void {
-		let fakedSearchValues: IPostsSearchUi = {
-			name: '',
-			username: '',
-			email: ''
-		};
-		this.postsFeatureService.search(fakedSearchValues);
+		this.postsFeatureService.search(this.postsOverviewFormService.value);
 	}
 }

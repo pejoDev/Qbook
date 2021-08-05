@@ -1,4 +1,4 @@
-<app-posts-search></app-posts-search>
+<app-posts-search [form]="formGroup" (search)="onSearch()"></app-posts-search>
 <app-posts-search-result
 	[searchResult$]="searchResult$"
 ></app-posts-search-result>

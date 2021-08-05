@@ -10,6 +10,8 @@ import { UsersService } from 'src/app/data-access/users/users.service';
 import { HttpClientModule } from '@angular/common/http';
 import { PostsFeatureService } from './posts-feature.service';
 import { CommentModule } from '../../comment/comment.module';
+import { ReactiveFormsModule } from '@angular/forms';
+import { PostsOverviewFormService } from './presentation/posts-search/form/posts-overview-form.service';
 
 @NgModule({
 	declarations: [
@@ -27,13 +29,20 @@ import { CommentModule } from '../../comment/comment.module';
 			}
 		]),
 		CommentModule,
-		HttpClientModule
+		HttpClientModule,
+		ReactiveFormsModule
 	],
 	exports: [
 		PostsContainerComponent,
 		PostsSearchComponent,
 		PostsSearchResultComponent
 	],
-	providers: [CommentsService, PostsService, UsersService, PostsFeatureService]
+	providers: [
+		CommentsService,
+		PostsService,
+		UsersService,
+		PostsFeatureService,
+		PostsOverviewFormService
+	]
 })
 export class PostsModule {}

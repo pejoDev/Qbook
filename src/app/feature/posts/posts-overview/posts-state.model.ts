@@ -11,7 +11,7 @@ export interface IPostsState {
 export const postsInitialState: IPostsState = {
 	searchValues: {
 		name: '',
-		username: ',',
+		username: '',
 		email: ''
 	},
 	searchResult: [],
