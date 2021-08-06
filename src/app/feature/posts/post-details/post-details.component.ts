@@ -13,10 +13,11 @@ export class PostDetailsComponent implements OnInit {
 	postsSearchResultUi!: IPostsSearchResultUi;
 
 	constructor(
-		private router: ActivatedRoute,
+		private activatedRoute: ActivatedRoute,
+		private router: Router,
 		private state: State<IPostsState>
 	) {
-		const postId = this.router.snapshot.params['id'];
+		const postId = this.activatedRoute.snapshot.params['id'];
 
 		this.postsSearchResultUi = <IPostsSearchResultUi>(
 			this.state.snapshot.searchResult?.find(
@@ -25,6 +26,10 @@ export class PostDetailsComponent implements OnInit {
 				}
 			)
 		);
+	}
+
+	goBack() {
+		this.router.navigate(['']);
 	}
 
 	ngOnInit(): void {}
