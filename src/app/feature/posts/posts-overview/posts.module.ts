@@ -32,19 +32,13 @@ import { PostModule } from '../post/post.module';
 		CommentModule,
 		HttpClientModule,
 		ReactiveFormsModule,
-  PostModule
+		PostModule
 	],
 	exports: [
 		PostsContainerComponent,
 		PostsSearchComponent,
 		PostsSearchResultComponent
 	],
-	providers: [
-		CommentsService,
-		PostsService,
-		UsersService,
-		PostsFeatureService,
-		PostsOverviewFormService
-	]
+	providers: [PostsOverviewFormService]
 })
 export class PostsModule {}

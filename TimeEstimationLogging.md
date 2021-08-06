@@ -41,3 +41,5 @@ This file is about project time estimation and time logging.
 01.08/02.08 - added html and css for comments, posts and filter component => 3h
 
 03.08/04.08 - connected components to db(posts, users, comments, css/html improvements) => 2h
+
+05.08/06.08 - implemented search, cleanup, code improvement => 2.5h

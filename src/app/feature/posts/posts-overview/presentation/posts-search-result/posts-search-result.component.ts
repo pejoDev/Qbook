@@ -12,5 +12,5 @@ import { IPostsSearchResultUi } from './posts-search-result.ui.model';
 	styleUrls: ['./posts-search-result.component.scss']
 })
 export class PostsSearchResultComponent {
-	@Input() searchResult$: Observable<IPostsSearchResultUi[]> | undefined;
+	@Input() searchResult$!: Observable<IPostsSearchResultUi[]>;
 }

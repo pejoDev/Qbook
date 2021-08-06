@@ -12,7 +12,7 @@ import { PostModule } from '../post/post.module';
 		CommonModule,
 		RouterModule.forChild([
 			{
-				path: 'details',
+				path: ':id',
 				component: PostDetailsComponent
 			}
 		]),

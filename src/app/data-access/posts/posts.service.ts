@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { IPost } from './post.model';
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class PostsService {
 	private readonly url = 'https://my-json-server.typicode.com/pejoDev/Qbook';
 

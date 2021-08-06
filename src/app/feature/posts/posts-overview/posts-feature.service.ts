@@ -11,7 +11,7 @@ import { PostsService } from 'src/app/data-access/posts/posts.service';
 import { IComment } from 'src/app/data-access/comments/comment.model';
 import { IUser } from 'src/app/data-access/users/user.model';
 import { IPost } from 'src/app/data-access/posts/post.model';
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class PostsFeatureService {
 	private unsubscribe$ = new Subject();
 

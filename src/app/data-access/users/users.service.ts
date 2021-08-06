@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { IUser } from './user.model';
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class UsersService {
 	private readonly url = 'https://my-json-server.typicode.com/pejoDev/Qbook';
 

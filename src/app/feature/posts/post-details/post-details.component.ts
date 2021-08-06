@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, Input, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { State } from 'src/app/utils/state-management/state';
+import { IPostsState } from '../posts-overview/posts-state.model';
 import { IPostsSearchResultUi } from '../posts-overview/presentation/posts-search-result/posts-search-result.ui.model';
 
 @Component({
@@ -8,19 +10,21 @@ import { IPostsSearchResultUi } from '../posts-overview/presentation/posts-searc
 	styleUrls: ['./post-details.component.scss']
 })
 export class PostDetailsComponent implements OnInit {
-	postsSearchResultUi: IPostsSearchResultUi;
+	postsSearchResultUi!: IPostsSearchResultUi;
 
-	constructor(private router: Router) {
-		this.postsSearchResultUi =
-			this.router.getCurrentNavigation()?.extras.state?.data.postsSearchResultUi;
+	constructor(
+		private router: ActivatedRoute,
+		private state: State<IPostsState>
+	) {
+		const postId = this.router.snapshot.params['id'];
 
-		/* 
-		Getting the data is not so obvious at a first glance.
-		Someone could expect that ActivatedRoute will contain it, but there is no attribute for state.
-		The state property was added to Navigation which is available through Router.getCurrentNavigation().extras.state.
-		Problem is that getCurrentNavigation returns Navigation only during the navigation and returns null after the navigation ended.
-		So the Navigationis no longer available in Component’s B onInit lifecycle hook.
-		We need to read the data from browser’s history object*/
+		this.postsSearchResultUi = <IPostsSearchResultUi>(
+			this.state.snapshot.searchResult?.find(
+				(searchResult: IPostsSearchResultUi) => {
+					return postId === searchResult.postId.toString();
+				}
+			)
+		);
 	}
 
 	ngOnInit(): void {}

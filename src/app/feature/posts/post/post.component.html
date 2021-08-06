@@ -6,7 +6,7 @@
 		<p class="post-user">{{ postsSearchResultUi.name }}</p>
 		<a
 			*ngIf="showLinkToPostDetails"
-			[routerLink]="['/post/details']"
+			[routerLink]="['/post', postsSearchResultUi.postId]"
 			[state]="{ data: {postsSearchResultUi}}"
 			>{{ postsSearchResultUi.title }}</a
 		>
