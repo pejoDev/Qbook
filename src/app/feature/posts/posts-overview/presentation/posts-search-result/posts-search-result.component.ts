@@ -1,9 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Component, Input } from '@angular/core';
 import { Observable } from 'rxjs';
-import { take } from 'rxjs/operators';
-import { PostsFeatureService } from '../../posts-feature.service';
-import { IPostsSearchUi } from '../posts-search/posts-search.ui.model';
 import { IPostsSearchResultUi } from './posts-search-result.ui.model';
 
 @Component({

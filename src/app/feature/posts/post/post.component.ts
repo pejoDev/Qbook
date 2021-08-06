@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { IPostsSearchResultUi } from '../posts-overview/presentation/posts-search-result/posts-search-result.ui.model';
 
 @Component({
@@ -6,7 +6,7 @@ import { IPostsSearchResultUi } from '../posts-overview/presentation/posts-searc
 	templateUrl: './post.component.html',
 	styleUrls: ['./post.component.scss']
 })
-export class PostComponent implements OnInit {
+export class PostComponent {
 	@Input()
 	postsSearchResultUi!: IPostsSearchResultUi;
 
@@ -15,10 +15,4 @@ export class PostComponent implements OnInit {
 
 	@Input()
 	showComments: boolean = true;
-
-	constructor() {
-		console.log('postsSearchResultUi', this.postsSearchResultUi);
-	}
-
-	ngOnInit(): void {}
 }

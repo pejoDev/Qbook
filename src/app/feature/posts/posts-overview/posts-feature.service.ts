@@ -1,24 +1,20 @@
 import { Injectable } from '@angular/core';
-import { Observable, Subject } from 'rxjs';
+import { Observable } from 'rxjs';
 import { IPostsSearchResultUi } from './presentation/posts-search-result/posts-search-result.ui.model';
 import { map, take, tap } from 'rxjs/operators';
 import { IPostsState, postsInitialState } from './posts-state.model';
 import { State } from 'src/app/utils/state-management/state';
 import { IPostsSearchUi } from './presentation/posts-search/posts-search.ui.model';
 import { UsersService } from 'src/app/data-access/users/users.service';
-import { CommentsService } from 'src/app/data-access/comments/comments.service';
 import { PostsService } from 'src/app/data-access/posts/posts.service';
-import { IComment } from 'src/app/data-access/comments/comment.model';
 import { IUser } from 'src/app/data-access/users/user.model';
 import { IPost } from 'src/app/data-access/posts/post.model';
+
 @Injectable({ providedIn: 'root' })
 export class PostsFeatureService {
-	private unsubscribe$ = new Subject();
-
 	constructor(
 		private state: State<IPostsState>,
 		private postsService: PostsService,
-		private commentsService: CommentsService,
 		private userService: UsersService
 	) {}
 
@@ -26,19 +22,6 @@ export class PostsFeatureService {
 		return this.state.select(
 			state => <IPostsSearchResultUi[]>state?.searchResult
 		);
-	}
-
-	getPostComments(postId: number): Observable<IComment[]> {
-		return this.commentsService.getCommentByPostId(postId);
-	}
-
-	getUserById(userId: number): Observable<IUser> {
-		return this.userService.getUserById(userId);
-	}
-
-	ngOnDestroy(): void {
-		this.unsubscribe$.next();
-		this.unsubscribe$.complete();
 	}
 
 	init(): Observable<IPostsState> {
@@ -146,21 +129,3 @@ export class PostsFeatureService {
 			});
 	}
 }
-
-/*
-let bol: boolean = true;
-				if (this.state.snapshot?.searchValues?.name) {
-					bol = searchResult.name.includes(
-						<string>this.state.snapshot?.searchValues?.name
-					);
-				} else if (this.state.snapshot?.searchValues?.username) {
-					bol = searchResult.username.includes(
-						<string>this.state.snapshot?.searchValues?.username
-					);
-				} else if (this.state.snapshot?.searchValues?.email) {
-					bol = searchResult.email.includes(
-						<string>this.state.snapshot?.searchValues?.email
-					);
-				}
-				return bol;
-*/

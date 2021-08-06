@@ -1,5 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
 import { IComment } from 'src/app/data-access/comments/comment.model';
 import { CommentsService } from 'src/app/data-access/comments/comments.service';
 
@@ -9,7 +8,7 @@ import { CommentsService } from 'src/app/data-access/comments/comments.service';
 	styleUrls: ['./comment.component.scss']
 })
 export class CommentComponent implements OnInit {
-	@Input() postId: number | undefined;
+	@Input() postId!: number;
 	constructor(private commentsService: CommentsService) {}
 
 	comments: IComment[] = [];

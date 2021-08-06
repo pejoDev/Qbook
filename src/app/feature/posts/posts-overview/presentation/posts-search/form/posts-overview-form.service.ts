@@ -14,7 +14,7 @@ export class PostsOverviewFormService {
 		email: this.EMAIL_CONTROL
 	};
 
-	private formGroup: FormGroup | undefined;
+	private formGroup!: FormGroup;
 
 	constructor(private readonly formBuilder: FormBuilder) {}
 
