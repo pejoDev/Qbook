@@ -9,6 +9,7 @@ import { UsersService } from 'src/app/data-access/users/users.service';
 import { PostsService } from 'src/app/data-access/posts/posts.service';
 import { IUser } from 'src/app/data-access/users/user.model';
 import { IPost } from 'src/app/data-access/posts/post.model';
+import { PostsMapper } from 'src/app/feature/posts/posts-overview/posts.mapper';
 
 @Injectable({ providedIn: 'root' })
 export class PostsFeatureService {
@@ -57,47 +58,30 @@ export class PostsFeatureService {
 
 	private executeSearch(): void {
 		// add loader or spiner this.loaderService.start();
-		this.postsService
-			.getPosts()
-			.pipe(take(1))
-			.subscribe(
-				searchResult => {
-					this.onSearchNext(searchResult);
-				},
-				error => {
-					throw error;
-				}
-				// () => stop loader this.loaderService.stop()
-			);
+		this.state.snapshot.searchResult?.length
+			? this.mapToSearchResultUi()
+			: this.postsService
+					.getPosts()
+					.pipe(take(1))
+					.subscribe(
+						posts => {
+							this.state.set({
+								searchResult: this.mapToSearchResultUi(posts),
+								posts: posts
+							});
+						},
+						error => {
+							throw error;
+						}
+						// () => stop loader this.loaderService.stop()
+					);
 	}
 
-	private onSearchNext = (searchResult: IPost[]): void => {
-		this.state.set({
-			searchResult: this.mapToSearchResultUi(searchResult)
-		});
-	};
-
-	private noDataFound = () => {
-		/*this.notificationService.showNotification(
-			this.efitTranslationService.instant('no.data.found')
-		);*/
-	};
-
-	mapToSearchResultUi(posts: IPost[]): IPostsSearchResultUi[] {
-		return posts
-			.map((post: IPost) => {
-				const user = this.state.snapshot.usersMeta?.find((user: IUser) => {
-					return user.id === post.userId;
-				});
-				return <IPostsSearchResultUi>{
-					name: user ? user.name : '',
-					username: user ? user.username : '',
-					email: user ? user.email : '',
-					postId: post.id,
-					body: post.body,
-					title: post.title
-				};
-			})
+	mapToSearchResultUi(posts?: IPost[]): IPostsSearchResultUi[] {
+		return PostsMapper.fromResourcesToPostUiResult(
+			<IUser[]>this.state.snapshot.usersMeta,
+			posts ? posts : <IPost[]>this.state.snapshot.posts
+		)
 			.filter((searchResult: IPostsSearchResultUi) => {
 				return searchResult.name
 					? searchResult.name
