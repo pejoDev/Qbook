@@ -10,7 +10,7 @@ import { IPostsState } from './posts-state.model';
 import { IPostsSearchUi } from './presentation/posts-search/posts-search.ui.model';
 import { IPost } from 'src/app/data-access/posts/post.model';
 import { PostsService } from 'src/app/data-access/posts/posts.service';
-fdescribe('PostsService', () => {
+describe('PostsService', () => {
 	let service: PostsFeatureService;
 
 	const user = <IUser[]>[
