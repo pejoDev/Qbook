@@ -3,7 +3,19 @@
 		<img src="assets/user-image.png" class="img-fluid" />
 	</span>
 	<span class="post-name">
-		<p class="post-user">{{ postsSearchResultUi.name }}</p>
+		<p
+			class="post-user curosor"
+			data-toggle="tooltip"
+			[title]="
+				'Username: ' +
+				postsSearchResultUi?.username +
+				'\r\n' +
+				'Email: ' +
+				postsSearchResultUi?.email
+			"
+		>
+			{{ postsSearchResultUi.name }}
+		</p>
 		<a
 			*ngIf="showLinkToPostDetails"
 			[routerLink]="['/post', postsSearchResultUi.postId]"
