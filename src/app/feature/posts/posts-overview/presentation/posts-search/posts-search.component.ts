@@ -11,6 +11,7 @@ export class PostsSearchComponent implements OnInit {
 	form!: FormGroup;
 
 	@Output() search = new EventEmitter<void>();
+	@Output() reset = new EventEmitter<void>();
 	constructor() {}
 
 	ngOnInit(): void {}

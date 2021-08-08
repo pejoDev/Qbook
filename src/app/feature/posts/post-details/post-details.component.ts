@@ -9,7 +9,7 @@ import { IPostsSearchResultUi } from '../posts-overview/presentation/posts-searc
 	templateUrl: './post-details.component.html',
 	styleUrls: ['./post-details.component.scss']
 })
-export class PostDetailsComponent implements OnInit {
+export class PostDetailsComponent {
 	postsSearchResultUi!: IPostsSearchResultUi;
 
 	constructor(
@@ -31,6 +31,4 @@ export class PostDetailsComponent implements OnInit {
 	goBack() {
 		this.router.navigate(['']);
 	}
-
-	ngOnInit(): void {}
 }

@@ -3,6 +3,7 @@ import { FormGroup } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { take } from 'rxjs/operators';
 import { PostsFeatureService } from '../posts-feature.service';
+import { postsInitialState } from '../posts-state.model';
 import { IPostsSearchResultUi } from '../presentation/posts-search-result/posts-search-result.ui.model';
 import { PostsOverviewFormService } from '../presentation/posts-search/form/posts-overview-form.service';
 import { IPostsSearchUi } from '../presentation/posts-search/posts-search.ui.model';
@@ -40,5 +41,8 @@ export class PostsContainerComponent implements OnInit {
 	}
 	onSearch(): void {
 		this.postsFeatureService.search(this.postsOverviewFormService.value);
+	}
+	onReset(): void {
+		this.formGroup.reset(postsInitialState.searchValues);
 	}
 }

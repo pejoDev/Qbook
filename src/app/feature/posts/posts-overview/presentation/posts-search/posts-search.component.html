@@ -24,7 +24,11 @@
 			name="Filter..."
 			(keyup.enter)="search.emit()"
 		/>
-		<button type="submit" class="btn btn-default">Filter</button>
-		<button type="reset" class="btn btn-default">Reset</button>
+		<button type="submit" class="btn btn-default" (click)="search.emit()">
+			Filter
+		</button>
+		<button type="reset" class="btn btn-default" (click)="reset.emit()">
+			Reset
+		</button>
 	</span>
 </div>

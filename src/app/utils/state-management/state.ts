@@ -4,7 +4,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class State<R> {
-	private state = new BehaviorSubject<R>(null as unknown as R); // null
+	private state = new BehaviorSubject<R>(null as unknown as R);
 
 	constructor() {}
 

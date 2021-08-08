@@ -57,9 +57,10 @@ export class PostsFeatureService {
 	}
 
 	private executeSearch(): void {
-		// add loader or spiner this.loaderService.start();
 		this.state.snapshot.searchResult?.length
-			? this.mapToSearchResultUi()
+			? this.state.set({
+					searchResult: this.mapToSearchResultUi()
+			  })
 			: this.postsService
 					.getPosts()
 					.pipe(take(1))
@@ -73,7 +74,6 @@ export class PostsFeatureService {
 						error => {
 							throw error;
 						}
-						// () => stop loader this.loaderService.stop()
 					);
 	}
 
@@ -87,7 +87,7 @@ export class PostsFeatureService {
 					? searchResult.name
 							.toLowerCase()
 							.includes(
-								<string>this.state.snapshot?.searchValues?.name.toLowerCase()
+								<string>this.state.snapshot?.searchValues?.name?.toLowerCase()
 							)
 					: true;
 			})
@@ -97,7 +97,7 @@ export class PostsFeatureService {
 							.toLowerCase()
 							.includes(
 								<string>(
-									this.state.snapshot?.searchValues?.username.toLowerCase()
+									this.state.snapshot?.searchValues?.username?.toLowerCase()
 								)
 							)
 					: true;
@@ -107,7 +107,7 @@ export class PostsFeatureService {
 					? searchResult.email
 							.toLowerCase()
 							.includes(
-								<string>this.state.snapshot?.searchValues?.email.toLowerCase()
+								<string>this.state.snapshot?.searchValues?.email?.toLowerCase()
 							)
 					: true;
 			});

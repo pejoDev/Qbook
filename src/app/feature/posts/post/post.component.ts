@@ -12,7 +12,4 @@ export class PostComponent {
 
 	@Input()
 	showLinkToPostDetails: boolean = true;
-
-	@Input()
-	showComments: boolean = true;
 }

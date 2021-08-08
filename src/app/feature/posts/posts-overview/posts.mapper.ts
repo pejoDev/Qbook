@@ -4,17 +4,17 @@ import { IPostsSearchResultUi } from './presentation/posts-search-result/posts-s
 
 export class PostsMapper {
 	static fromResourcesToPostUiResult(
-		user: IUser[],
+		users: IUser[],
 		posts: IPost[]
 	): IPostsSearchResultUi[] {
 		return posts.map((post: IPost) => {
-			const userPost = user.find((user: IUser) => {
+			const user = users.find((user: IUser) => {
 				return user.id === post.userId;
 			});
 			return <IPostsSearchResultUi>{
-				name: userPost ? userPost.name : '',
-				username: userPost ? userPost.username : '',
-				email: userPost ? userPost.email : '',
+				name: user ? user.name : '',
+				username: user ? user.username : '',
+				email: user ? user.email : '',
 				postId: post.id,
 				body: post.body,
 				title: post.title
