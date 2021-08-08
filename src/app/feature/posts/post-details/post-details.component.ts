@@ -20,15 +20,18 @@ export class PostDetailsComponent {
 		const postId = this.activatedRoute.snapshot.params['id'];
 
 		this.postsSearchResultUi = <IPostsSearchResultUi>(
-			this.state.snapshot.searchResult?.find(
+			this.state.snapshot?.searchResult?.find(
 				(searchResult: IPostsSearchResultUi) => {
-					return postId === searchResult.postId.toString();
+					return postId === searchResult.postId?.toString();
 				}
 			)
 		);
+		if (!this.postsSearchResultUi) {
+			this.router.navigate(['error-page']);
+		}
 	}
 
-	goBack() {
+	goToHomePage() {
 		this.router.navigate(['']);
 	}
 }
