@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { IComment } from './comment.model';
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class CommentsService {
 	private readonly url = 'https://my-json-server.typicode.com/pejoDev/Qbook';
 

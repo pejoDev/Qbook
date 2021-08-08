@@ -1,0 +1,19 @@
+<button
+	type="button"
+	class="btn btn-outline-primary margin"
+	(click)="goToHomePage()"
+>
+	Back
+</button>
+<div class="container">
+	<div class="row">
+		<div class="col-12">
+			<div>
+				<app-post
+					[postsSearchResultUi]="postsSearchResultUi"
+					[showLinkToPostDetails]="false"
+				></app-post>
+			</div>
+		</div>
+	</div>
+</div>

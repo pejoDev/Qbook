@@ -2,9 +2,9 @@ import { Injectable } from '@angular/core';
 import { distinctUntilChanged, map } from 'rxjs/operators';
 import { BehaviorSubject, Observable } from 'rxjs';
 
-@Injectable({ providedIn: 'any' })
+@Injectable({ providedIn: 'root' })
 export class State<R> {
-	private state = new BehaviorSubject<R>(null as unknown as R); // null
+	private state = new BehaviorSubject<R>(null as unknown as R);
 
 	constructor() {}
 

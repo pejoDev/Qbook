@@ -39,10 +39,11 @@ button {
 	border-bottom: 1px solid #ccc;
 	border-left: 0px;
 	border-right: 0px;
+	margin-right: 10px;
 	outline: 0px;
 	box-shadow: none;
 	border-radius: 0;
-	width: 100%;
+	width: 32%; // TODO check resolutions
 	padding: 0;
 	font-weight: normal;
 }

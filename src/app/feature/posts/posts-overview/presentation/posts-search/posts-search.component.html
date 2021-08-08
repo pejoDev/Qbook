@@ -1,0 +1,34 @@
+<div class="filter-box add-filter" [formGroup]="form">
+	<span class="user-pic">
+		<img src="assets/user-image.png" class="img-fluid" />
+	</span>
+	<span class="filter">
+		<input
+			formControlName="name"
+			type="text"
+			placeholder="Search posts by user name"
+			name="Filter..."
+			(keyup.enter)="search.emit()"
+		/>
+		<input
+			formControlName="username"
+			type="text"
+			placeholder="Search posts by user username"
+			name="Filter..."
+			(keyup.enter)="search.emit()"
+		/>
+		<input
+			formControlName="email"
+			type="text"
+			placeholder="Search posts by user email"
+			name="Filter..."
+			(keyup.enter)="search.emit()"
+		/>
+		<button type="submit" class="btn btn-default" (click)="search.emit()">
+			Filter
+		</button>
+		<button type="reset" class="btn btn-default" (click)="reset.emit()">
+			Reset
+		</button>
+	</span>
+</div>

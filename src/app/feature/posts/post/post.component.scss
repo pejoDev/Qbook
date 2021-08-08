@@ -1,8 +1,4 @@
-.posts button {
-	background-color: transparent;
-	border: none;
-}
-.posts .post-box {
+.post-box {
 	width: 100%;
 	float: left;
 	height: 100%;
@@ -12,7 +8,10 @@
 	border-radius: 5px;
 	border: 1px solid #ddd;
 }
-.posts .post-pic {
+.curosor {
+	cursor: context-menu;
+}
+.post-pic {
 	width: 50px;
 	height: 50px;
 	display: inline-block;
@@ -21,15 +20,15 @@
 	overflow: hidden;
 	background-color: #fff;
 }
-.posts .post-user {
+.post-user {
 	margin-bottom: 0px;
 }
-.posts p.post-txt {
+p.post-txt {
 	font-size: 15px;
 	border-bottom: 1px solid #ddd;
 	padding: 0px 0px 15px;
 }
-.posts .post-name {
+.post-name {
 	display: inline-block;
 	position: relative;
 	top: -5px;
@@ -39,18 +38,18 @@
 }
 /*======Responsive CSS=======*/
 @media (max-width: 767px) {
-	.posts .post-name {
+	.post-name {
 		font-size: 13px;
 		top: -5px;
 	}
-	.posts .post-pic {
+	.post-pic {
 		width: 40px;
 		height: 40px;
 	}
-	.posts .post-name a {
+	.post-name a {
 		display: block;
 	}
-	.posts .post-name .comment-time {
+	.post-name {
 		display: block;
 		margin-left: 0px;
 	}

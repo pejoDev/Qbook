@@ -4,11 +4,11 @@ import { PostsContainerComponent } from './container/posts-container.component';
 import { PostsSearchComponent } from './presentation/posts-search/posts-search.component';
 import { PostsSearchResultComponent } from './presentation/posts-search-result/posts-search-result.component';
 import { RouterModule } from '@angular/router';
-import { CommentModule } from '../comment/comment.module';
-import { CommentsService } from 'src/app/data-access/comments/comments.service';
-import { PostsService } from 'src/app/data-access/posts/posts.service';
-import { UsersService } from 'src/app/data-access/users/users.service';
 import { HttpClientModule } from '@angular/common/http';
+import { CommentModule } from '../../comment/comment.module';
+import { ReactiveFormsModule } from '@angular/forms';
+import { PostsOverviewFormService } from './presentation/posts-search/form/posts-overview-form.service';
+import { PostModule } from '../post/post.module';
 
 @NgModule({
 	declarations: [
@@ -26,13 +26,15 @@ import { HttpClientModule } from '@angular/common/http';
 			}
 		]),
 		CommentModule,
-		HttpClientModule
+		HttpClientModule,
+		ReactiveFormsModule,
+		PostModule
 	],
 	exports: [
 		PostsContainerComponent,
 		PostsSearchComponent,
 		PostsSearchResultComponent
 	],
-	providers: [CommentsService, PostsService, UsersService]
+	providers: [PostsOverviewFormService]
 })
 export class PostsModule {}

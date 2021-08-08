@@ -1,10 +1,10 @@
-<div class="comment-box replied">
+<div class="comment-box replied" *ngFor="let comment of comments">
 	<span class="commenter-pic">
-		<img src="assets/user-image.png" class="img-fluid" />
+		<img src="assets/user-black.png" class="img-fluid" />
 	</span>
 	<span class="commenter-name">
-		<p class="post-user">username</p>
-		<a href="#"> post title</a>
+		<p class="post-user font-italic font-weight-light">{{ comment.email }}</p>
+		<p>{{ comment.name }}</p>
 	</span>
-	<p class="comment-txt more">Comment 1</p>
+	<p class="comment-txt more">{{ comment.body }}</p>
 </div>

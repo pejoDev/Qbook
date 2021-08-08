@@ -10,7 +10,28 @@ const routes: Routes = [
 	{
 		path: 'posts',
 		loadChildren: () =>
-			import('./feature/posts/posts.module').then(m => m.PostsModule)
+			import('./feature/posts/posts-overview/posts.module').then(
+				m => m.PostsModule
+			)
+	},
+	{
+		path: 'post',
+		loadChildren: () =>
+			import('./feature/posts/post-details/post-details.module').then(
+				m => m.PostDetailsModule
+			)
+	},
+	{
+		path: 'error-page',
+		loadChildren: () =>
+			import('./feature/error-page/error-page.module').then(
+				m => m.ErrorPageModule
+			)
+	},
+	{
+		path: '**',
+		redirectTo: 'error-page',
+		pathMatch: 'full'
 	}
 ];
 
