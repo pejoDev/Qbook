@@ -12,12 +12,12 @@ export class UsersService {
 	 * Function for getting all of available users
 	 */
 	getUsers(): Observable<IUser[]> {
-		return this.httpClient.get<IUser[]>(`${this.url}/user`); //TODO: change for users in db.json
+		return this.httpClient.get<IUser[]>(`${this.url}/users`);
 	}
 	/**
 	 * Function for getting user by user id
 	 */
 	getUserById(userId: number): Observable<IUser> {
-		return this.httpClient.get<IUser>(`${this.url}/user/${userId}`);
+		return this.httpClient.get<IUser>(`${this.url}/users/${userId}`);
 	}
 }
