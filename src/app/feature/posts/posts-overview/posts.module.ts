@@ -4,7 +4,6 @@ import { PostsContainerComponent } from './container/posts-container.component';
 import { PostsSearchComponent } from './presentation/posts-search/posts-search.component';
 import { PostsSearchResultComponent } from './presentation/posts-search-result/posts-search-result.component';
 import { RouterModule } from '@angular/router';
-import { HttpClientModule } from '@angular/common/http';
 import { CommentModule } from '../../comment/comment.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { PostsOverviewFormService } from './presentation/posts-search/form/posts-overview-form.service';
@@ -26,7 +25,6 @@ import { PostModule } from '../post/post.module';
 			}
 		]),
 		CommentModule,
-		HttpClientModule,
 		ReactiveFormsModule,
 		PostModule
 	],

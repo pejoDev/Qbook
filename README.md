@@ -18,6 +18,8 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 
 Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
+Currently there are 9 basic tests.
+
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
@@ -61,5 +63,3 @@ Utils folder is for util components that can be shared in the project.
 #### State management
 
 State management class is class that provides state for saving data on runtime. Data can be access through whole project by injecting state class to client component. State management is actually BehaviorSubject that contains data.
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.

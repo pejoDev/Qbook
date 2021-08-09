@@ -19,7 +19,6 @@
 		<a
 			*ngIf="showLinkToPostDetails"
 			[routerLink]="['/post', postsSearchResultUi.postId]"
-			[state]="{ data: {postsSearchResultUi}}"
 			>{{ postsSearchResultUi.title }}</a
 		>
 		<p *ngIf="!showLinkToPostDetails">

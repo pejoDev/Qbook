@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { take } from 'rxjs/operators';
 import { IComment } from 'src/app/data-access/comments/comment.model';
 import { CommentsService } from 'src/app/data-access/comments/comments.service';
 
@@ -20,6 +21,7 @@ export class CommentComponent implements OnInit {
 	getPostComments(): void {
 		this.commentsService
 			.getCommentByPostId(this.postId as number)
+			.pipe(take(1))
 			.subscribe((comments: IComment[]) => {
 				this.comments = comments;
 			});
