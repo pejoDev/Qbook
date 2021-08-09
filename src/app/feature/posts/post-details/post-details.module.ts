@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PostDetailsComponent } from './post-details.component';
 import { CommentModule } from '../../comment/comment.module';
-import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { PostModule } from '../post/post.module';
 
@@ -17,10 +16,8 @@ import { PostModule } from '../post/post.module';
 			}
 		]),
 		CommentModule,
-		HttpClientModule,
 		PostModule
 	],
-	exports: [PostDetailsComponent],
-	providers: []
+	exports: [PostDetailsComponent]
 })
 export class PostDetailsModule {}
